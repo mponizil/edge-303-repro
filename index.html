@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <button id="button">Send request</button>
+  <pre id="output"></pre>
+
+  <script type="text/javascript">
+    function debug(message) {
+      document.getElementById('output').innerHTML += "<br />" + message;
+    }
+
+    function request(host) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', host + '/moved-from');
+      xhr.responseType = 'json';
+      xhr.setRequestHeader('content-type', 'application/json');
+      xhr.setRequestHeader('accept', 'application/json, text/plain');
+      xhr.onload = function() {
+        debug(host + ' [response status] ' + xhr.status);
+        debug(host + ' [response body] ' + JSON.stringify(xhr.response));
+      }
+      xhr.onerror = function() {
+        debug(host + ' [response status] ' + xhr.status);
+        debug(host + ' [response error] ' + JSON.stringify(xhr.response));
+      }
+      xhr.send(JSON.stringify({
+        some: 'data'
+      }));
+    }
+
+    document.getElementById('button').addEventListener('click', function() {
+      request(location.origin);
+      request(location.origin.replace('3000', '3001'));
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "edge-303-bug",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Misha Ponizil <misha@latch.com>",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.15.4"
+  }
+}
