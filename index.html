@@ -19,10 +19,12 @@
       xhr.setRequestHeader('accept', 'application/json, text/plain');
       xhr.onload = function() {
         debug(host + ' [response status] ' + xhr.status);
+        debug(host + ' [response location] ' + xhr.getResponseHeader('Location'));
         debug(host + ' [response body] ' + JSON.stringify(xhr.response));
       }
       xhr.onerror = function() {
         debug(host + ' [response status] ' + xhr.status);
+        debug(host + ' [response location] ' + xhr.getResponseHeader('Location'));
         debug(host + ' [response error] ' + JSON.stringify(xhr.response));
       }
       xhr.send(JSON.stringify({
